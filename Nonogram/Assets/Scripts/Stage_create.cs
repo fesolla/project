@@ -407,8 +407,8 @@ public class Stage_create : MonoBehaviour
         {
             for (int j = 0; j < hint_scale; j++)
             {
-                hint_up[i, j] = 0;
-                hint_left[j, i] = 0;
+                check_up[i, j] = 0;
+                check_left[j, i] = 0;
             }
         }
     }

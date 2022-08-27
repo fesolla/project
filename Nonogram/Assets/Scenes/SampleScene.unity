@@ -170,8 +170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board_block: {fileID: 1505533971}
   hint_block: {fileID: 644962216}
-  board_scale: 8
-  hint_scale: 5
+  board_scale: 5
+  hint_scale: 3
   image_change:
   - {fileID: 7820271134184854335, guid: a2a637166d5ea3a49adadc5d8c4b5e89, type: 3}
   - {fileID: -1350529663752499361, guid: a2a637166d5ea3a49adadc5d8c4b5e89, type: 3}
@@ -1540,7 +1540,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 3425605258711615321, guid: a2a637166d5ea3a49adadc5d8c4b5e89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
