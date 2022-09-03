@@ -162,7 +162,19 @@ public class Stage_create : MonoBehaviour
                             //Debug.Log("hint_left[" + i + "-1," + j + "-1-hint_scale]=" + hint_left[i - 1, j - 1 - hint_scale]);
                         }
                         //传瓜ぇネΘ
-                        Instantiate(hint_block, new Vector3(-(board_scale + hint_scale) / 2 + i - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
+                        //耞案∕﹚琻弊
+                        float fix = 0;
+                        if (j%2 == 0)
+                        {
+                            //计
+                            fix = 0.25f;
+                        }
+                        else
+                        {
+                            //案计
+                            fix = -0.25f;
+                        }
+                        Instantiate(hint_block, new Vector3(-(board_scale + hint_scale) / 2 + i + fix - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
                         //Debug.Log("癹伴Ω计"+i+j);
                         //竚瓜
                         hint_block.GetComponent<SpriteRenderer>().sprite = sprite_white;
@@ -172,7 +184,19 @@ public class Stage_create : MonoBehaviour
                     {
                         //畒夹竚(x,y)癸莱よ竚(i,j) = (x+(board_scale + hint_scale)/2,-y-(board_scale + hint_scale)/2)
                         //σ納boardタ跑Θ(i',j') = (x+(board_scale - hint_scale)/2,-y+(board_scale - hint_scale)/2)
-                        Instantiate(board_block, new Vector3(-(board_scale + hint_scale) / 2 + i - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
+                        //耞案∕﹚琻弊
+                        float fix = 0;
+                        if (j % 2 == 0)
+                        {
+                            //计
+                            fix = 0.25f;
+                        }
+                        else
+                        {
+                            //案计
+                            fix = -0.25f;
+                        }
+                        Instantiate(board_block, new Vector3(-(board_scale + hint_scale) / 2 + i + fix - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
                     }
                 }
             }
