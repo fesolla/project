@@ -16,6 +16,8 @@ public class Stage_create : MonoBehaviour
     //anser_zone_生成用的
     public GameObject board_block;
     public GameObject hint_block;
+    public GameObject board_block_gray;
+    public GameObject hint_block_gray;
 
     public int board_scale = 5;
     public int hint_scale = 3;
@@ -37,7 +39,7 @@ public class Stage_create : MonoBehaviour
         box_to_check = new int[board, board];//檢查用
         //生成關卡
         //(1)限制個數
-        int safe_zone = board * board * 2 / 5 + Random.Range(0, (board * board) /3);
+        int safe_zone = board * board / 2 + Random.Range(0, (board * board) /4);
 
         //(2)填入...1是安全區...2是禁止
 
@@ -162,19 +164,11 @@ public class Stage_create : MonoBehaviour
                             //Debug.Log("hint_left[" + i + "-1," + j + "-1-hint_scale]=" + hint_left[i - 1, j - 1 - hint_scale]);
                         }
                         //換圖片之後生成
-                        //判斷奇偶決定歪斜
-                        float fix = 0;
-                        if (j%2 == 0)
+                        if(hint_block.GetComponent<SpriteRenderer>().sprite != sprite_white)
                         {
-                            //奇數
-                            fix = 0.25f;
+                            //生成非空白區
+                            Instantiate(hint_block, new Vector3(-(board_scale + hint_scale) / 2 + i - 1f, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
                         }
-                        else
-                        {
-                            //偶數
-                            fix = -0.25f;
-                        }
-                        Instantiate(hint_block, new Vector3(-(board_scale + hint_scale) / 2 + i + fix - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
                         //Debug.Log("迴圈次數"+i+j);
                         //重置圖片
                         hint_block.GetComponent<SpriteRenderer>().sprite = sprite_white;
@@ -184,19 +178,20 @@ public class Stage_create : MonoBehaviour
                     {
                         //座標位置(x,y)對應到方格位置(i,j) = (x+(board_scale + hint_scale)/2,-y-(board_scale + hint_scale)/2)
                         //只考慮board修正變成(i',j') = (x+(board_scale - hint_scale)/2,-y+(board_scale - hint_scale)/2)
-                        //判斷奇偶決定歪斜
-                        float fix = 0;
-                        if (j % 2 == 0)
+                        //顏色交替
+                        GameObject board_spawn;                        
+                        if (i%2 != 0)
                         {
-                            //奇數
-                            fix = 0.25f;
+                            board_spawn = board_block;
                         }
                         else
                         {
-                            //偶數
-                            fix = -0.25f;
+                            //board_spawn = board_block_gray;
+                            //直接註解改回白色
+                            board_spawn = board_block;
                         }
-                        Instantiate(board_block, new Vector3(-(board_scale + hint_scale) / 2 + i + fix - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
+                        //生成
+                        Instantiate(board_spawn, new Vector3(-(board_scale + hint_scale) / 2 + i - 1, (board_scale + hint_scale) / 2 - j + 1, 0), transform.rotation);
                     }
                 }
             }
